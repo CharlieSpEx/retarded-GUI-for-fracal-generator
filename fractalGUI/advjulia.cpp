@@ -5,9 +5,13 @@
 #include <QMessageBox>
 #include "advjulia.h"
 
-//#include <QtGui>
-//#include <QtCore>
-//#include <QApplication>
+#include <QtGui>
+#include <QtCore>
+#include <QGridLayout>
+#include <QGraphicsView>
+
+
+
 
 advJulia::advJulia(QWidget *parent, long double dX, long double dY, long double X,long double Y, double zR, double zI) :
     QDialog(parent),
@@ -31,6 +35,39 @@ advJulia::advJulia(QWidget *parent, long double dX, long double dY, long double 
 
 }
 
+bool advJulia::extendedRenderCheckBoxValidation(){
+
+    // funkcja sprawdza poprawność wpisanych danych dla extended render
+
+    if(ui->extendedRenderCheckBox->isChecked()){
+        bool valid = false;
+        if(ui->horisontalRes->text().toDouble() <= 0.0){
+        ui->horisontalRes->setText("incorrect value");}
+        else{
+            valid = true;
+        }
+
+        if(ui->verticalRes->text().toDouble() <= 0.0){
+        ui->verticalRes->setText("incorrect value");
+        valid = false;
+        }else{
+            valid = true;
+        }
+        if (valid){
+         this->sizeX = ui->verticalRes->text().toInt();
+         this->sizeY = ui->horisontalRes->text().toInt();
+        }
+        return valid;}
+    else{
+        sizeX = 697;
+        sizeY = 697;
+        return true;
+    }
+
+
+
+}
+
 bool advJulia::nCheckBoxValidation(){
 
     // funkcja sprawdzająca czy nCheckBox czyli popraność wpisanych danych
@@ -41,9 +78,12 @@ bool advJulia::nCheckBoxValidation(){
             ui->lineEdit_2->setText("incorrect value");
             return false;
         }else{
-        N = ui->lineEdit_2->text().toInt();
+        this->N = ui->lineEdit_2->text().toInt();
         return true;
-    }}else return true;
+    }}else{
+        N = 0;
+        return true;
+    }
 }
 
 bool advJulia::checkBoxValidation(){
@@ -53,7 +93,8 @@ bool advJulia::checkBoxValidation(){
 
     bool valid = false;
 
-    valid = nCheckBoxValidation();
+    valid = (nCheckBoxValidation()&&extendedRenderCheckBoxValidation());
+
 
     if (valid == false){
         return valid;
@@ -119,10 +160,10 @@ void advJulia::verifyNeeded(){
 
     // max iterations i escape range
     if(ui->maxIterationsLineEdit->text().toInt() <= 0){
-        ui->maxIterationsLineEdit->setText(QString::number(1));
+        ui->maxIterationsLineEdit->setText(QString::number(10));
     }
     if(ui->maxIterationsLineEdit_2->text().toDouble()<= 0){
-        ui->maxIterationsLineEdit_2->setText(QString::number(1));
+        ui->maxIterationsLineEdit_2->setText(QString::number(2));
     }
 
 }
@@ -143,14 +184,58 @@ void advJulia::on_drawButton_clicked()
         msgBox.exec();
     }else{
         verifyNeeded();
-        QWidget *window = new QWidget;
-        window->setWindowTitle("Julia's Set advanced render");
 
-      //  QGridLayout *layout = new QGridLayout
+        // generowanie fractalu
+         minX = X-dX/2;
+         maxX = X+dX/2;
+         minY = Y-dX/2;
+         maxY = Y+dX/2;
+
+        zR = ui->reLineEdit->text().toDouble();
+        zI = ui->lineEdit->text().toDouble();
+        R = ui->maxIterationsLineEdit_2->text().toDouble();
+        max_iter = ui->maxIterationsLineEdit->text().toInt();
+
+         int type = ui->spinBox->value();
+
+          qDebug() <<"T: "<< type << endl;
+          qDebug() <<"sX: "<< sizeX << endl;
+          qDebug() <<"sY: "<< sizeY << endl;
+          qDebug() <<"N: "<< N << endl;
+          qDebug() <<"R: "<< R << endl;
+
+
+        fractalDraw Wrr(type, sizeX, sizeY, zR, zI, max_iter,  minX, maxX, minY, maxY);
+        if(N>0){
+            Wrr.nDraw(N, R);
+        }else{
+            Wrr.draw();
+        }
+        this->image = Wrr.image;
+
+        //  Otwieranie nowego okna z wykonanym fractalem
+
+        QWidget *window = new QWidget;
+        window->setWindowTitle("Advanced Julia's Set render");
+        window->resize(sizeX+30, sizeY+30);
+
+        QGridLayout *layout = new QGridLayout;
+        QGraphicsScene *graphics = new QGraphicsScene;
+
+        graphics->addPixmap(QPixmap::fromImage(image));
+
+        QGraphicsView* view = new QGraphicsView(graphics,this);
+        QPainter painter(&image);
+
+        view->render(&painter);
+        layout->addWidget(view, 0, 0);
+
+        window->setLayout(layout);
+        window->close();
+        window->show();
 
 
     }
-    // reszta kodu
 }
 
 void advJulia::on_nFunctionCheckBox_stateChanged(int arg1)
@@ -201,10 +286,12 @@ void advJulia::on_checkBox_stateChanged(int arg1)
 
 void advJulia::on_extendedRenderCheckBox_stateChanged(int arg1)
 {
-    ui->horisontalRes->setText("must be filled");
-    ui->verticalRes->setText("must be filled");
-    if ( arg1 == 0){
-        ui->horisontalRes->setText("");
-        ui->verticalRes->setText("");
-    }
+    if(ui->horisontalRes->text().toDouble() == 0.0){
+    ui->horisontalRes->setText("must be filled");}
+
+    if(ui->verticalRes->text().toDouble() == 0.0){
+    ui->verticalRes->setText("must be filled");}
+
+
 }
+

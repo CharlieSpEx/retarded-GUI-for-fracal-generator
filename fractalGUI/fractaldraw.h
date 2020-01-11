@@ -7,7 +7,7 @@ class fractalDraw
 {
 public:
     double  zR, zI, maxX, minX, maxY, minY;
-    int sizeX, sizeY,max_iter, type;
+    int sizeX, sizeY,max_iter, type, size;
     QImage image;
     fractalDraw(int type, int sizeX, int sizeY, double zR, double zI, int max_iter, double minX, double maxX, double minY, double maxY);
     ~fractalDraw();
@@ -15,7 +15,7 @@ public:
     int FindM(double cr, double ci, int max_iter, double zR, double zI);
     double Map(int x, int W, double minR, double maxR);
     void draw();
-    //QGraphicsScene graphic;
+    void nDraw(int N, double R);
 private:
 
 };
