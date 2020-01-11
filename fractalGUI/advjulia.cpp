@@ -10,6 +10,7 @@
 #include <QGridLayout>
 #include <QGraphicsView>
 
+#include <QFileDialog>
 
 
 
@@ -198,9 +199,9 @@ void advJulia::on_drawButton_clicked()
 
          int type = ui->spinBox->value();
 
-          qDebug() <<"T: "<< type << endl;
-          qDebug() <<"sX: "<< sizeX << endl;
-          qDebug() <<"sY: "<< sizeY << endl;
+          qDebug() <<"dX: "<< QString::number(dX, 'g', 4) << endl;
+          qDebug() <<"cX: "<< QString::number(X, 'g', 4) << endl;
+          qDebug() <<"cY: "<< QString::number(Y, 'g', 4) << endl;
           qDebug() <<"N: "<< N << endl;
           qDebug() <<"R: "<< R << endl;
 
@@ -295,3 +296,21 @@ void advJulia::on_extendedRenderCheckBox_stateChanged(int arg1)
 
 }
 
+
+void advJulia::on_pushButton_clicked()
+{
+    // zapisywanie do pliku
+    QString path = "";
+
+    pathselection *P;
+
+    P = new pathselection;
+    P->show();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Warning");
+    msgBox.setText(" Insert valid path, file will not be saved otherwise. ");
+    msgBox.exec();
+    P->image = this->image;
+
+
+}

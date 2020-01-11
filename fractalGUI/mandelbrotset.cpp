@@ -4,6 +4,8 @@
 #include <string>
 #include <QScrollBar>
 #include <QDebug>
+#include <pathselection.h>
+#include <QMessageBox>
 
 
 double MfractalDraw::map(int x, int W, double minR, double maxR){
@@ -171,10 +173,21 @@ void mandelbrotSet::on_xSlider_valueChanged(int value)
 void mandelbrotSet::on_pushButton_3_clicked()
 {
     on_pushButton_2_clicked();
+    /*
     QGraphicsScene *graphic = new QGraphicsScene(this);
     QGraphicsView* view = new QGraphicsView(graphic,this);
     QString fileName = "mandelbrotSet.png";
     QPainter painter(&image);
     view->render(&painter);
     image.save(fileName);
+    */
+    pathselection *P;
+
+    P = new pathselection;
+    P->show();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Warning");
+    msgBox.setText(" Insert valid path, file will not be saved otherwise. ");
+    msgBox.exec();
+    P->image = this->image;
 }

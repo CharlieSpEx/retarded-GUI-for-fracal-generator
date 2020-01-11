@@ -25,6 +25,7 @@ SOURCES += \
     fractalgui.cpp \
     mandelbrotset.cpp \
     newtonfractal.cpp \
+    pathselection.cpp \
     sierpinskitriangle.cpp
 
 HEADERS += \
@@ -36,6 +37,7 @@ HEADERS += \
     kochsnowflake.h \
     mandelbrotset.h \
     newtonfractal.h \
+    pathselection.h \
     sierpinskitriangle.h
 
 FORMS += \
@@ -46,6 +48,7 @@ FORMS += \
     kochsnowflake.ui \
     mandelbrotset.ui \
     newtonfractal.ui \
+    pathselection.ui \
     sierpinskitriangle.ui
 
 # Default rules for deployment.

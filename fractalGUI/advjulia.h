@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "fractaldraw.h"
-
+#include "pathselection.h"
 
 namespace Ui {
 class advJulia;
@@ -22,7 +22,6 @@ public:
     long double dX, dY, X, Y;
     double zR, zI, R, minX, maxX, minY, maxY;
     QImage image = QImage(sizeX, sizeY, QImage::Format_RGB32);
-    //Ui::advJulia *ui;
     bool drawButtonStatus= false;
 
 
@@ -45,8 +44,11 @@ private slots:
     void verifyNeeded();
 
 
+    void on_pushButton_clicked();
+
 private:
     Ui::advJulia *ui;
+
 };
 
 #endif // ADVJULIA_H

@@ -5,6 +5,7 @@
 #include <QScrollBar>
 #include <QDebug>
 #include "fractaldraw.h"
+#include <QMessageBox>
 
 
 double oMap(int x, int W, double minR, double maxR){
@@ -111,12 +112,25 @@ void juliaSet::on_nDagreeslider_valueChanged(int value)
 void juliaSet::on_drawButton_2_clicked()
 {
     on_drawButton_clicked();
+
+    /*
     QGraphicsScene *graphic = new QGraphicsScene(this);
     QGraphicsView* view = new QGraphicsView(graphic,this);
     QString fileName = "juliaSet.png";
     QPainter painter(&image);
     view->render(&painter);
     image.save(fileName);
+    */
+
+    pathselection *P;
+
+    P = new pathselection;
+    P->show();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Warning");
+    msgBox.setText(" Insert valid path, file will not be saved otherwise. ");
+    msgBox.exec();
+    P->image = this->image;
 }
 
 void juliaSet::grabMouse(){

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>404</width>
-    <height>432</height>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -79,7 +79,10 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600;&quot;&gt;Please be warned&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;, it is advised to maintain costant range for both&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-style:italic;&quot;&gt; X&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt; and &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-style:italic;&quot;&gt;Y&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt; area. Doing otherwise will create a blurred image.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600;&quot;&gt;In order to render image:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;- select  properties&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;- press &amp;quot;Draw&amp;quot; button&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;- press &amp;quot;Render&amp;quot; button&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textBrowser_2">
@@ -316,6 +319,9 @@ p, li { white-space: pre-wrap; }
      <height>22</height>
     </rect>
    </property>
+   <property name="maximum">
+    <number>5</number>
+   </property>
   </widget>
   <widget class="QCheckBox" name="extendedRenderCheckBox">
    <property name="geometry">
@@ -409,6 +415,27 @@ p, li { white-space: pre-wrap; }
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>drawButton</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>exitButton</tabstop>
+  <tabstop>textBrowser_2</tabstop>
+  <tabstop>maxYLineEdit</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>maxXLineEdit</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>maxIterationsLineEdit</tabstop>
+  <tabstop>minXLineEdit</tabstop>
+  <tabstop>nFunctionCheckBox</tabstop>
+  <tabstop>maxIterationsLineEdit_2</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>spinBox</tabstop>
+  <tabstop>extendedRenderCheckBox</tabstop>
+  <tabstop>horisontalRes</tabstop>
+  <tabstop>verticalRes</tabstop>
+  <tabstop>textBrowser</tabstop>
+  <tabstop>reLineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
