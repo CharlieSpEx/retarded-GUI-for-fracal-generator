@@ -16,31 +16,45 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    advjulia.cpp \
+    drawwindow.cpp \
+    fractaldraw.cpp \
     juliaset.cpp \
     kochsnowflake.cpp \
     main.cpp \
     fractalgui.cpp \
     mandelbrotset.cpp \
     newtonfractal.cpp \
+    pathselection.cpp \
     sierpinskitriangle.cpp
 
 HEADERS += \
+    advjulia.h \
+    drawwindow.h \
+    fractaldraw.h \
     fractalgui.h \
     juliaset.h \
     kochsnowflake.h \
     mandelbrotset.h \
     newtonfractal.h \
+    pathselection.h \
     sierpinskitriangle.h
 
 FORMS += \
+    advjulia.ui \
+    drawwindow.ui \
     fractalgui.ui \
     juliaset.ui \
     kochsnowflake.ui \
     mandelbrotset.ui \
     newtonfractal.ui \
+    pathselection.ui \
     sierpinskitriangle.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    README

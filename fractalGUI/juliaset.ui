@@ -111,7 +111,7 @@
      <rect>
       <x>750</x>
       <y>350</y>
-      <width>41</width>
+      <width>81</width>
       <height>21</height>
      </rect>
     </property>
@@ -124,7 +124,7 @@
      <rect>
       <x>870</x>
       <y>590</y>
-      <width>41</width>
+      <width>61</width>
       <height>21</height>
      </rect>
     </property>
@@ -142,10 +142,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="maximum">
-     <number>100</number>
+     <number>50</number>
     </property>
     <property name="pageStep">
      <number>1</number>

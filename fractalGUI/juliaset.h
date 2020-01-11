@@ -2,6 +2,8 @@
 #define JULIASET_H
 
 #include <QMainWindow>
+#include <QGraphicsItem>
+#include "advjulia.h"
 
 namespace Ui {
 class juliaSet;
@@ -16,6 +18,9 @@ public:
     ~juliaSet();
     int sizeX = 697;
     int sizeY = 697;
+    double minX, maxX, minY, maxY;
+    double long cR, cI, dX, dY;
+    int max_iter, zoom;
 
     QImage image = QImage(sizeX, sizeY, QImage::Format_RGB32  );
 
@@ -38,24 +43,16 @@ private slots:
 
     void on_drawButton_2_clicked();
 
+    void grabMouse();
+
+    void mausePressEvent(QGraphicsSceneMouseEvent *scene);
+
+    void on_pushButton_clicked();
+
 private:
     Ui::juliaSet *ui;
+    advJulia *aJulia;
 };
 
-class fractalDraw : public juliaSet{
-public:
-    double  zR, zI, maxX, minX, maxY, minY;
-    int sizeX, sizeY,max_iter, type;
-    QImage image;
-    fractalDraw(int type, int sizeX, int sizeY, double zR, double zI, int max_iter, double minX, double maxX, double minY, double maxY);
-    ~fractalDraw();
-    int nFindM(double cr, double ci, int max_iter, double zR, double zI, int n, double r);
-    int FindM(double cr, double ci, int max_iter, double zR, double zI);
-    double Map(int x, int W, double minR, double maxR);
-    void draw();
-    //QGraphicsScene graphic;
-private:
-
-};
 
 #endif // JULIASET_H

@@ -7,6 +7,7 @@
 #include "mandelbrotset.h"
 #include "newtonfractal.h"
 #include "sierpinskitriangle.h"
+//#include "advjulia.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class fractalGUI; }

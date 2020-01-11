@@ -4,6 +4,8 @@
 #include <string>
 #include <QScrollBar>
 #include <QDebug>
+#include <pathselection.h>
+#include <QMessageBox>
 
 
 double MfractalDraw::map(int x, int W, double minR, double maxR){
@@ -38,12 +40,11 @@ mandelbrotSet::~mandelbrotSet()
 void mandelbrotSet::on_pushButton_2_clicked()
 {
 
-    double dX = 4;
-    double dY = 4;
-
-
     int zoom = pow(2,ui->zoomSlider->value());
     int max_iter = ui->nDagree->value();
+
+    double dX = 4/zoom;
+    double dY = 4/zoom;
 
     double x = ui->xSlider->value();
     double minX= x/(1000);
@@ -52,27 +53,6 @@ void mandelbrotSet::on_pushButton_2_clicked()
     double minY = y/(1000);
     double maxY = minY+dY;
 
-
-    /*
-    double minX= ui->xSlider->value()/10;
-    double maxX = ui->lineEdit_2->text().toDouble();
-    double minY = ui->minY->text().toDouble();
-    double maxY = ui->maxY->text().toDouble();
-     */
-
-    double cX, cY;
-    cX = (maxX-minX)/2 +minX ;
-    cY = (maxY-minY)/2 +minY ;
-
-    double xR = maxX-cX, yR = maxY-cY;
-
-    xR=xR/zoom;
-    yR=yR/zoom;
-
-    minX = cX-xR;
-    maxX = cX+xR;
-    minY =cY-yR;
-    maxY =cY+yR;
 
     int type = ui->colorBox->value();
 /*
@@ -193,10 +173,21 @@ void mandelbrotSet::on_xSlider_valueChanged(int value)
 void mandelbrotSet::on_pushButton_3_clicked()
 {
     on_pushButton_2_clicked();
+    /*
     QGraphicsScene *graphic = new QGraphicsScene(this);
     QGraphicsView* view = new QGraphicsView(graphic,this);
     QString fileName = "mandelbrotSet.png";
     QPainter painter(&image);
     view->render(&painter);
     image.save(fileName);
+    */
+    pathselection *P;
+
+    P = new pathselection;
+    P->show();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Warning");
+    msgBox.setText(" Insert valid path, file will not be saved otherwise. ");
+    msgBox.exec();
+    P->image = this->image;
 }
