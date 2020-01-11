@@ -1,0 +1,11 @@
+To do:
+ - jak wyeksportować obrazek z nowego okna? przycisk draw powinien rysować nowy obraz w starym polu
+
+
+Possible solution (?):
+    Zamiast funkcji draw w oknie Advanced, może by dodać opcję prewiew, która otwierałaby nowe
+okno w którym znajdowałby się nowo wyrenderowany obraz.
+    Zasadniczo to może sie również nazywać Draw, po prostu kluczowe jest wówczas żeby stare
+okno się zamknęło. W takim wypadku uzyskane ustawienia zostaną po prostu wyeksportowane
+( co jest znacznie mniej problematyczne ), natomiast obraz zostanie wygenerowany w oparciu o
+nowe parametry już w nowym oknie.

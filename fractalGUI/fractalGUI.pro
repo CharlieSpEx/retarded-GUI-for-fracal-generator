@@ -16,6 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    advjulia.cpp \
+    drawwindow.cpp \
+    fractaldraw.cpp \
     juliaset.cpp \
     kochsnowflake.cpp \
     main.cpp \
@@ -25,6 +28,9 @@ SOURCES += \
     sierpinskitriangle.cpp
 
 HEADERS += \
+    advjulia.h \
+    drawwindow.h \
+    fractaldraw.h \
     fractalgui.h \
     juliaset.h \
     kochsnowflake.h \
@@ -33,6 +39,8 @@ HEADERS += \
     sierpinskitriangle.h
 
 FORMS += \
+    advjulia.ui \
+    drawwindow.ui \
     fractalgui.ui \
     juliaset.ui \
     kochsnowflake.ui \
@@ -44,3 +52,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    README
