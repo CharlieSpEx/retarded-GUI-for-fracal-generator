@@ -213,7 +213,7 @@ void advJulia::on_drawButton_clicked()
             Wrr.draw();
         }
         this->image = Wrr.image;
-
+        //image.save("wrr2.jpg");
         //  Otwieranie nowego okna z wykonanym fractalem
 
         QWidget *window = new QWidget;
@@ -311,6 +311,7 @@ void advJulia::on_pushButton_clicked()
     msgBox.setText(" Insert valid path, file will not be saved otherwise. ");
     msgBox.exec();
     P->image = this->image;
+    //image.save("wrr.jpg");
 
 
 }

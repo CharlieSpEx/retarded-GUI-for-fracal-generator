@@ -25,7 +25,7 @@ public:
     QImage image = QImage(sizeX, sizeY, QImage::Format_RGB32  );
 
 private slots:
-    void on_pushButton_2_clicked();
+    //void on_pushButton_2_clicked();
 
     void on_drawButton_clicked();
 
